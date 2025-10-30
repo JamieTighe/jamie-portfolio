@@ -16,70 +16,50 @@ const PROFILE = {
 };
 
 const PROJECTS = [
-  /* 1) Capstone */
   {
-    title: "EV Charging vs EV Demand (UK) — Capstone",
-    year: "2025",
-    blurb:
-      "Matched OpenChargeMap with DfT EV registrations by Local Authority to flag underserved areas and power bands; built a prioritisation view.",
-    tags: ["Python", "SQL", "Tableau", "Geospatial"],
-    href: "#",                 // TODO: add Tableau/case-study link
-    thumb: "/thumb-ev-capstone.jpg",  // put file in /public
-  },
-
-  /* 2) B&B Sales Analysis & Projections */
-  {
-    title: "B&B Sales Analysis & Projections",
+    title: "Airbnb Fee Strategy — Maximise Host Revenue",
     year: "2023",
     blurb:
-      "Answered management questions across 10 Australian offices and built simple projections for 2022–23 performance.",
-    tags: ["Excel", "Tableau"],
-    href: "#",
-    thumb: "/thumb-bnb-sales.jpg",
+      "Cleaned listings, modelled fee levers (cleaning, min nights, extra-guest) and recommended pricing tiers by property type/amenities.",
+    tags: ["Excel", "Power Query", "PivotTables", "Charts"],
+    href: "/projects/airbnb",
+    thumb: "/thumb-airbnb.jpg",
   },
-
-  /* 3) U.S. Wind Power Operators — Potential Investment Targets */
   {
-    title: "U.S. Wind Power Operators — Potential Investment Targets",
+    title: "Food Distributor — Sales & Margin Intelligence",
     year: "2024",
     blurb:
-      "Compared operator presence and plant types across states to shortlist three credible owners for future investment.",
-    tags: ["Python", "Tableau"],
-    href: "#",
-    thumb: "/thumb-wind-operators.jpg",
+      "Built a Power BI model across 2012–2014 sales to surface product/region seasonality, top customers and margin hot spots.",
+    tags: ["Power BI", "Data Modelling", "DAX (light)", "Maps"],
+    href: "/projects/food-dist",
+    thumb: "/thumb-food.jpg",
   },
-
-  /* 4) COVID-19 Vaccination & Cases Relationship */
   {
-    title: "COVID-19 Vaccination & Cases — Relationship",
-    year: "2023",
-    blurb:
-      "Explored linkage between vaccination rates and cases/deaths using an online API and clean visual storytelling.",
-    tags: ["Python", "API", "Tableau"],
-    href: "#",
-    thumb: "/thumb-covid.jpg",
-  },
-
-  /* 5) Sales Agents Performance */
-  {
-    title: "Sales Agents Performance",
-    year: "2023",
-    blurb:
-      "Superstore sample data; evaluated agent performance by region and product mix for quick coaching and targeting.",
-    tags: ["Excel", "Power BI"],
-    href: "#",
-    thumb: "/thumb-sales-agents.jpg",
-  },
-
-  /* 6) Wind Energy Data Sprint (US Turbines × EIA923) */
-  {
-    title: "Wind Energy Sprint — Turbines × EIA923",
+    title: "AdventureWorks — Marketing Allocation (SQL)",
     year: "2025",
     blurb:
-      "Linked turbine locations to generation to show capacity hotspots and manufacturer share over time.",
-    tags: ["SQL", "Tableau", "Data Viz"],
-    href: "#",
-    thumb: "/thumb-wind-sprint.jpg",
+      "SQL analysis across products, vendors, territories and reps to guide budget towards high-return categories and regions.",
+    tags: ["SQL", "Joins", "Windowing (where needed)"],
+    href: "/projects/adventureworks",
+    thumb: "/thumb-advw.jpg",
+  },
+  {
+    title: "Lending Club — Portfolio Risk Patterns",
+    year: "2025",
+    blurb:
+      "SQL deep-dive on purpose, grade, geography and borrower profiles; flagged delinquency patterns and exposure pockets.",
+    tags: ["SQL", "Aggregation", "Risk profiling"],
+    href: "/projects/loans",
+    thumb: "/thumb-loans.jpg",
+  },
+  {
+    title: "HR Consulting — Workforce & Tenure Insights",
+    year: "2025",
+    blurb:
+      "Headcount, tenure and exits by BU/region/VP, plus exit reasons and early-tenure risk—actionable retention suggestions.",
+    tags: ["SQL", "HR Analytics", "Cohorts"],
+    href: "/projects/hr",
+    thumb: "/thumb-hr.jpg",
   },
 ];
 
@@ -561,7 +541,7 @@ const Footer = () => (
 );
 
 /* ----------------------- app (site-wide spotlight) ----------------------- */
-export default function PortfolioSite() {
+function PortfolioSite() {
   const [pos, setPos] = useState({ x: 0, y: 0 }); // site-wide spotlight
   useMemo(() => {
     if (typeof window !== "undefined") {
@@ -602,3 +582,35 @@ export default function PortfolioSite() {
     </div>
   );
 }
+// (add these imports near the bottom, but still top-level)
+import { Routes, Route, Link } from "react-router-dom";
+import AirbnbCase from "./pages/AirbnbCase.jsx";
+import FoodCase from "./pages/FoodCase.jsx";
+import AdvWorksCase from "./pages/AdvWorksCase.jsx";
+import LoansCase from "./pages/LoansCase.jsx";
+import HrCase from "./pages/HrCase.jsx";
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<PortfolioSite />} />
+      <Route path="/projects/airbnb" element={<AirbnbCase />} />
+      <Route path="/projects/food-dist" element={<FoodCase />} />
+      <Route path="/projects/adventureworks" element={<AdvWorksCase />} />
+      <Route path="/projects/loans" element={<LoansCase />} />
+      <Route path="/projects/hr" element={<HrCase />} />
+      <Route
+        path="*"
+        element={
+          <div className="min-h-screen grid place-items-center bg-[#0B1220] text-white p-6">
+            <div className="text-center space-y-4">
+              <h1 className="text-2xl font-semibold">Page not found</h1>
+              <Link className="underline" to="/">Go back home</Link>
+            </div>
+          </div>
+        }
+      />
+    </Routes>
+  );
+}
+
