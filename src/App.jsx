@@ -16,65 +16,70 @@ const PROFILE = {
 };
 
 const PROJECTS = [
+  /* 1) Capstone */
   {
-    title: "EV Charging vs EV Demand (UK)",
+    title: "EV Charging vs EV Demand (UK) — Capstone",
     year: "2025",
     blurb:
-      "Matched OpenChargeMap supply with DfT EV registrations per LA to flag underserved areas and power bands.",
+      "Matched OpenChargeMap with DfT EV registrations by Local Authority to flag underserved areas and power bands; built a prioritisation view.",
     tags: ["Python", "SQL", "Tableau", "Geospatial"],
-    href: "#", // add Tableau/Case Study link
-    thumb:
-      "https://images.unsplash.com/photo-1614586125858-4b7b1f1d4d7d?q=80&w=1200&auto=format&fit=crop",
+    href: "#",                 // TODO: add Tableau/case-study link
+    thumb: "/thumb-ev-capstone.jpg",  // put file in /public
   },
+
+  /* 2) B&B Sales Analysis & Projections */
   {
-    title: "Wind Energy Sprint (US Turbines × EIA923)",
+    title: "B&B Sales Analysis & Projections",
+    year: "2023",
+    blurb:
+      "Answered management questions across 10 Australian offices and built simple projections for 2022–23 performance.",
+    tags: ["Excel", "Tableau"],
+    href: "#",
+    thumb: "/thumb-bnb-sales.jpg",
+  },
+
+  /* 3) U.S. Wind Power Operators — Potential Investment Targets */
+  {
+    title: "U.S. Wind Power Operators — Potential Investment Targets",
+    year: "2024",
+    blurb:
+      "Compared operator presence and plant types across states to shortlist three credible owners for future investment.",
+    tags: ["Python", "Tableau"],
+    href: "#",
+    thumb: "/thumb-wind-operators.jpg",
+  },
+
+  /* 4) COVID-19 Vaccination & Cases Relationship */
+  {
+    title: "COVID-19 Vaccination & Cases — Relationship",
+    year: "2023",
+    blurb:
+      "Explored linkage between vaccination rates and cases/deaths using an online API and clean visual storytelling.",
+    tags: ["Python", "API", "Tableau"],
+    href: "#",
+    thumb: "/thumb-covid.jpg",
+  },
+
+  /* 5) Sales Agents Performance */
+  {
+    title: "Sales Agents Performance",
+    year: "2023",
+    blurb:
+      "Superstore sample data; evaluated agent performance by region and product mix for quick coaching and targeting.",
+    tags: ["Excel", "Power BI"],
+    href: "#",
+    thumb: "/thumb-sales-agents.jpg",
+  },
+
+  /* 6) Wind Energy Data Sprint (US Turbines × EIA923) */
+  {
+    title: "Wind Energy Sprint — Turbines × EIA923",
     year: "2025",
     blurb:
       "Linked turbine locations to generation to show capacity hotspots and manufacturer share over time.",
     tags: ["SQL", "Tableau", "Data Viz"],
     href: "#",
-    thumb:
-      "https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    title: "Lending Club Risk Explorer",
-    year: "2025",
-    blurb:
-      "Segmented default risk by grade, term, and income. Built simple rules to surface riskier cohorts.",
-    tags: ["Python", "Pandas", "Tableau"],
-    href: "#",
-    thumb:
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    title: "Kickstarter Outcome Analyzer",
-    year: "2025",
-    blurb:
-      "Modeled success odds by category/goal/time window. Clear guidance on targets and campaign timing.",
-    tags: ["SQL", "Tableau"],
-    href: "#",
-    thumb:
-      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    title: "Chipotle Add-on Sales",
-    year: "2025",
-    blurb:
-      "Identified sides/combo patterns that lift basket value; quick “what to promote” dashboard.",
-    tags: ["Excel", "Power BI"],
-    href: "#",
-    thumb:
-      "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    title: "AdventureWorks Marketing Dashboard",
-    year: "2025",
-    blurb:
-      "Built funnel and cohort views for email campaigns; tracked CAC and repeat purchase behaviour.",
-    tags: ["SQL", "Power BI"],
-    href: "#",
-    thumb:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop",
+    thumb: "/thumb-wind-sprint.jpg",
   },
 ];
 
