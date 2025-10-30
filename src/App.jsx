@@ -305,15 +305,61 @@ const Projects = () => (
 );
 
 
-const Skills = () => (
-  <Section id="skills" title="Skills" kicker="Toolkit">
-    <div className="flex flex-wrap gap-2">
-      {["Python","Pandas","SQL","Tableau","Power BI","Excel","Git","APIs & ETL","Geospatial (UK LAs)","Storytelling"].map(s => (
-        <Chip key={s}>{s}</Chip>
-      ))}
-    </div>
-  </Section>
-);
+// --- tiny icons (optional; they’re aria-hidden so names do the SEO/UX work) ---
+const Mini = {
+  python: (p) => <svg viewBox="0 0 24 24" {...p}><circle cx="12" cy="12" r="10" fill="currentColor"/></svg>,
+  sql:    (p) => <svg viewBox="0 0 24 24" {...p}><text x="3" y="17" fontSize="14" fill="currentColor">SQL</text></svg>,
+  excel:  (p) => <svg viewBox="0 0 24 24" {...p}><rect x="3" y="3" width="18" height="18" rx="2" fill="currentColor"/></svg>,
+  tableau:(p) => <Icon.tableau {...p} />,
+  pbi:    (p) => <svg viewBox="0 0 24 24" {...p}>
+                  <rect x="3" y="10" width="3" height="8" rx="1" fill="currentColor"/>
+                  <rect x="8" y="7" width="3" height="11" rx="1" fill="currentColor"/>
+                  <rect x="13" y="5" width="3" height="13" rx="1" fill="currentColor"/>
+                  <rect x="18" y="8" width="3" height="10" rx="1" fill="currentColor"/>
+                </svg>,
+};
+
+const CORE_SKILLS = [
+  { name: "Python (pandas)", icon: "python" },
+  { name: "SQL (PostgreSQL)", icon: "sql" },
+  { name: "Excel", icon: "excel" },
+  { name: "Tableau", icon: "tableau" },
+  { name: "Power BI", icon: "pbi" },
+];
+
+const Skills = () => {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: CORE_SKILLS.map((s, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: s.name,
+    })),
+  };
+
+  return (
+    <Section id="skills" title="Skills" kicker="Core analytics">
+      <ul className="flex flex-wrap gap-2" role="list" aria-label="Core analytics">
+        {CORE_SKILLS.map(({ name, icon }) => {
+          const I = Mini[icon] || (() => null);
+          return (
+            <li key={name}
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5"
+                data-skill={name} aria-label={name}>
+              <I className="h-4 w-4 opacity-80" aria-hidden="true" />
+              <span className="text-sm">{name}</span>
+            </li>
+          );
+        })}
+      </ul>
+
+      {/* JSON-LD for SEO */}
+      <script type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    </Section>
+  );
+};
 
 const Timeline = () => {
   const ITEMS = [
