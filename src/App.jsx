@@ -61,6 +61,62 @@ const PROJECTS = [
     href: "/projects/hr",
     thumb: "/thumb-hr.jpg",
   },
+
+  /* ---------- NEW CARDS (these create hover tiles) ---------- */
+  {
+    title: "Tableau Lab — HR Attrition",
+    year: "2025",
+    blurb:
+      "Attrition rate by segment, tenure, and role with calculated fields, highlight parameters and interactive dashboard filters.",
+    tags: ["Tableau", "HR", "Calculated Fields"],
+    href: "/projects/tableau-attrition",
+    thumb: "/thumb-tableau-attrition.jpg",
+  },
+  {
+    title: "Tableau Lab — FIFA World Cup",
+    year: "2025",
+    blurb:
+      "Maps and time-series of goals-per-match, finalists, and eras—geocoding fixes and annotated outliers.",
+    tags: ["Tableau", "Maps", "Time-series"],
+    href: "/projects/tableau-world-cup",
+    thumb: "/thumb-tableau-worldcup.jpg",
+  },
+  {
+    title: "Tableau — Animations (Gapminder)",
+    year: "2025",
+    blurb:
+      "Animated bubble chart: life expectancy vs income with population size, pivot-to-long and Pages control.",
+    tags: ["Tableau", "Animation", "Design"],
+    href: "/projects/tableau-animations",
+    thumb: "/thumb-tableau-animations.jpg",
+  },
+  {
+    title: "Data Journalism — U.S. Elections",
+    year: "2025",
+    blurb:
+      "Story with state/county maps, party share calcs, and turnout trends—clean joins and clear narrative.",
+    tags: ["Tableau", "Story", "Maps"],
+    href: "/projects/tableau-elections",
+    thumb: "/thumb-tableau-elections.jpg",
+  },
+  {
+    title: "Wind Turbines — Data Sprint",
+    year: "2025",
+    blurb:
+      "USWT + EIA joins: capacity maps, OEM/operator shares, and growth hotspots for investor brief.",
+    tags: ["Python", "Tableau", "Energy"],
+    href: "/projects/wind-sprint",
+    thumb: "/thumb-wind.jpg",
+  },
+  {
+    title: "EV Charging vs Demand (UK) — Capstone",
+    year: "2025",
+    blurb:
+      "OCM + DfT + ONS: chargers per 1k EVs by power band; prioritise rapid installs where coverage lags demand.",
+    tags: ["Python", "SQL", "Tableau"],
+    href: "/projects/ev-capstone",
+    thumb: "/thumb-ev-capstone.jpg",
+  },
 ];
 
 
@@ -589,7 +645,12 @@ import FoodCase from "./pages/FoodCase.jsx";
 import AdvWorksCase from "./pages/AdvWorksCase.jsx";
 import LoansCase from "./pages/LoansCase.jsx";
 import HrCase from "./pages/HrCase.jsx";
-
+import TableauAttritionLab from "./pages/TableauAttritionLab.jsx";
+import TableauWorldCupLab from "./pages/TableauWorldCupLab.jsx";
+import TableauAnimationsLab from "./pages/TableauAnimationsLab.jsx";
+import TableauElectionsLab from "./pages/TableauElectionsLab.jsx";
+import WindSprint from "./pages/WindSprint.jsx";
+import EVCapstone from "./pages/EVCapstone.jsx";
 export default function App() {
   return (
     <Routes>
@@ -599,6 +660,13 @@ export default function App() {
       <Route path="/projects/adventureworks" element={<AdvWorksCase />} />
       <Route path="/projects/loans" element={<LoansCase />} />
       <Route path="/projects/hr" element={<HrCase />} />
+	<Route path="/projects/tableau-attrition" element={<TableauAttritionLab />} />
+<Route path="/projects/tableau-world-cup" element={<TableauWorldCupLab />} />
+<Route path="/projects/tableau-animations" element={<TableauAnimationsLab />} />
+<Route path="/projects/tableau-elections" element={<TableauElectionsLab />} />
+<Route path="/projects/wind-sprint" element={<WindSprint />} />
+<Route path="/projects/ev-capstone" element={<EVCapstone />} />
+
       <Route
         path="*"
         element={
