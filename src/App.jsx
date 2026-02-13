@@ -141,7 +141,7 @@ const projects = [
     links: {
       tableau: null,
       github: "https://github.com/JamieTighe/airbnb-host-fee-structure-excel-analysis",
-      report: "PASTE_LINK_HERE",
+      report: null,
     },
     image: airbnbImg,
     imageAlt: "Cover image for Airbnb pricing and fee strategy project.",
@@ -162,7 +162,7 @@ const projects = [
     links: {
       tableau: null,
       github: "https://github.com/JamieTighe/kickstarter-campaign-success-excel-analysis",
-      report: "PASTE_LINK_HERE",
+      report: null,
     },
     image: kickstarterImg,
     imageAlt: "Cover image for Kickstarter campaign success analysis.",
@@ -595,7 +595,7 @@ function HeroSection() {
         <p className="mt-5 max-w-2xl mx-auto text-sm sm:text-base text-white/75 leading-relaxed">
           Engineering graduate turned data analyst. I turn{" "}
           <span className="text-white">real-world mess</span> into{" "}
-          <span className="text-white">decision-ready outputs</span> — clean
+          <span className="text-white">decision-ready outputs</span>: clean
           tables, sharp KPIs, and dashboards people rely on.
         </p>
 
@@ -701,7 +701,7 @@ function ProjectsSection() {
           Selected projects
         </h2>
         <p className="mt-2 text-sm text-slate-600 max-w-2xl">
-          End-to-end projects across Excel, SQL, Python and Tableau — focused on
+          End-to-end projects across Excel, SQL, Python and Tableau: focused on
           clean analysis, clear storytelling, and stakeholder-ready outputs.
         </p>
 
@@ -826,7 +826,6 @@ function ProjectModal({ project, onClose }) {
     typeof project.embedUrl === "string" && project.embedUrl.startsWith("http");
   const hasTableau = !!project.links?.tableau && project.links.tableau !== "#";
   const hasGithub = !!project.links?.github && project.links.github !== "#";
-  const hasReport = !!project.links?.report && project.links.report !== "#";
 
   const paragraphs = safeSplitParagraphs(project.longDescription);
 
@@ -841,7 +840,6 @@ function ProjectModal({ project, onClose }) {
       {/* smaller modal so you can see top & bottom */}
       <div
         className="relative mx-4 w-full max-w-5xl rounded-3xl bg-white shadow-2xl"
-
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -853,126 +851,111 @@ function ProjectModal({ project, onClose }) {
           ×
         </button>
 
-<div className="p-6 sm:p-8">
-  {/* Title + links */}
-  <div>
-    <h3 className="text-xl sm:text-2xl font-semibold text-slate-900">
-      {project.title}
-    </h3>
+        <div className="p-6 sm:p-8">
+          {/* Title + links */}
+          <div>
+            <h3 className="text-xl sm:text-2xl font-semibold text-slate-900">
+              {project.title}
+            </h3>
 
-    <div className="mt-3 flex flex-wrap items-center gap-3">
-      {hasTableau && (
-        <a
-          href={project.links.tableau}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm hover:bg-slate-50 hover:border-slate-300"
-        >
-          <TableauLogoImg className="h-5 w-5" />
-          <span>View</span>
-          <FiExternalLink className="opacity-70" />
-        </a>
-      )}
+            <div className="mt-3 flex flex-wrap items-center gap-3">
+              {hasTableau && (
+                <a
+                  href={project.links.tableau}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm hover:bg-slate-50 hover:border-slate-300"
+                >
+                  <TableauLogoImg className="h-5 w-5" />
+                  <span>View</span>
+                  <FiExternalLink className="opacity-70" />
+                </a>
+              )}
 
-      {hasGithub && (
-        <a
-          href={project.links.github}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm hover:bg-slate-50 hover:border-slate-300"
-        >
-          <FaGithub className="text-lg" />
-          <span>Code</span>
-          <FiExternalLink className="opacity-70" />
-        </a>
-      )}
-
-      {hasReport && (
-        <a
-          href={project.links.report}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm hover:bg-slate-50 hover:border-slate-300"
-        >
-          <span className="font-medium text-slate-900">Report</span>
-          <FiExternalLink className="opacity-70" />
-        </a>
-      )}
-    </div>
-  </div>
-
-  {/* 2-column layout */}
-  <div className="mt-6 grid gap-6 lg:grid-cols-[420px_1fr] items-start">
-    {/* Left: image */}
-    <div className="rounded-2xl overflow-hidden bg-white">
-      {hasEmbed ? (
-        <iframe
-          title={`${project.title} dashboard`}
-          src={project.embedUrl}
-          className="w-full h-[260px] lg:h-[320px]"
-          frameBorder="0"
-          allowFullScreen
-        />
-      ) : project.image ? (
-        <img
-          src={project.image}
-          alt={project.imageAlt || project.title}
-          className="w-full h-[260px] lg:h-[320px] object-cover"
-        />
-      ) : (
-        <div className="w-full h-[260px] lg:h-[320px] flex items-center justify-center text-sm text-slate-600">
-          Add an image in <code className="mx-1">src/assets</code>
-        </div>
-      )}
-    </div>
-
-    {/* Right: text */}
-    <div className="flex flex-col gap-4">
-      {/* Tools */}
-      <div className="flex flex-wrap gap-2">
-        {(project.tags || []).map((t) => (
-          <ToolPillLight key={t}>{t}</ToolPillLight>
-        ))}
-      </div>
-
-      {/* Blurb */}
-      {project.hoverBlurb && (
-        <p className="text-sm text-slate-600 leading-relaxed">
-          {project.hoverBlurb}
-        </p>
-      )}
-
-      {/* Long description */}
-      {paragraphs.length > 0 && (
-        <div className="space-y-3 text-sm text-slate-700">
-          {paragraphs.map((p, i) => (
-            <p key={i} className="leading-relaxed">
-              {p}
-            </p>
-          ))}
-        </div>
-      )}
-
-      {/* Highlights */}
-      {Array.isArray(project.highlights) && project.highlights.length > 0 && (
-        <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-          <div className="text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
-            Key highlights
+              {hasGithub && (
+                <a
+                  href={project.links.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm hover:bg-slate-50 hover:border-slate-300"
+                >
+                  <FaGithub className="text-lg" />
+                  <span>Code</span>
+                  <FiExternalLink className="opacity-70" />
+                </a>
+              )}
+            </div>
           </div>
-          <ul className="mt-2 space-y-1 text-sm text-slate-700 list-disc pl-5">
-            {project.highlights.map((h, idx) => (
-              <li key={idx}>{h}</li>
-            ))}
-          </ul>
+
+          {/* 2-column layout */}
+          <div className="mt-6 grid gap-6 lg:grid-cols-[420px_1fr] items-start">
+            {/* Left: image */}
+            <div className="rounded-2xl overflow-hidden bg-white">
+              {hasEmbed ? (
+                <iframe
+                  title={`${project.title} dashboard`}
+                  src={project.embedUrl}
+                  className="w-full h-[260px] lg:h-[320px]"
+                  frameBorder="0"
+                  allowFullScreen
+                />
+              ) : project.image ? (
+                <img
+                  src={project.image}
+                  alt={project.imageAlt || project.title}
+                  className="w-full h-[260px] lg:h-[320px] object-cover"
+                />
+              ) : (
+                <div className="w-full h-[260px] lg:h-[320px] flex items-center justify-center text-sm text-slate-600">
+                  Add an image in <code className="mx-1">src/assets</code>
+                </div>
+              )}
+            </div>
+
+            {/* Right: text */}
+            <div className="flex flex-col gap-4">
+              {/* Tools */}
+              <div className="flex flex-wrap gap-2">
+                {(project.tags || []).map((t) => (
+                  <ToolPillLight key={t}>{t}</ToolPillLight>
+                ))}
+              </div>
+
+              {/* Blurb */}
+              {project.hoverBlurb && (
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  {project.hoverBlurb}
+                </p>
+              )}
+
+              {/* Long description */}
+              {paragraphs.length > 0 && (
+                <div className="space-y-3 text-sm text-slate-700">
+                  {paragraphs.map((p, i) => (
+                    <p key={i} className="leading-relaxed">
+                      {p}
+                    </p>
+                  ))}
+                </div>
+              )}
+
+              {/* Highlights */}
+              {Array.isArray(project.highlights) &&
+                project.highlights.length > 0 && (
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                    <div className="text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
+                      Key highlights
+                    </div>
+                    <ul className="mt-2 space-y-1 text-sm text-slate-700 list-disc pl-5">
+                      {project.highlights.map((h, idx) => (
+                        <li key={idx}>{h}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+            </div>
+          </div>
         </div>
-      )}
-    </div>
-  </div>
-</div>
-
-
- 
-      
       </div>
     </div>
   );
@@ -1040,7 +1023,7 @@ function InterestsSection() {
     {
       icon: "🍽️",
       title: "Food",
-      text: "Always hunting for great food — I keep a list of London spots to try.",
+      text: "Always hunting for great food. I keep a running list of London spots to try.",
     },
     {
       icon: "♟️",
@@ -1050,7 +1033,7 @@ function InterestsSection() {
     {
       icon: "✈️",
       title: "Travel",
-      text: "Been around South America and Southeast Asia — plenty more on the list.",
+      text: "I’ve travelled around South America and Southeast Asia. Plenty more on the list.",
     },
   ];
 
@@ -1105,6 +1088,13 @@ function ContactSection() {
 
         <div className="flex flex-wrap gap-3">
           <a
+            href="mailto:jamie@jamietighe.com?subject=Website%20enquiry"
+            className="rounded-full border border-white/20 bg-white/5 px-5 py-2 text-sm font-medium hover:bg-white/10 transition"
+          >
+            Email me
+          </a>
+
+          <a
             href="https://www.linkedin.com/in/jamietighe98/"
             target="_blank"
             rel="noreferrer"
@@ -1143,7 +1133,9 @@ function App() {
 
   useEffect(() => {
     const sectionIds = ["home", "about", "projects", "skills", "interests", "contact"];
-    const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
 
     const observer = new IntersectionObserver(
       (entries) => {
