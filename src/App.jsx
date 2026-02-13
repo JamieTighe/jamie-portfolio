@@ -111,7 +111,7 @@ const projects = [
     hoverBlurb:
       "Tableau data journalism project using MIT Election Lab data: cleaned fields, built county/state maps, and created interactive filters to explore results by year. Delivered a narrative Story supported by dashboards and worksheets.",
     longDescription:
-      "As a “data journalist,” I used Tableau to build a story about U.S. presidential elections in the 21st century.\n\nI cleaned and standardised key fields and created calculated metrics not provided directly in the raw dataset (e.g., party vote share and loyalty-style measures). I then built interactive visuals—trend charts and county/state maps—with year filters and informative tooltips so users can explore results at multiple levels. Finally, I packaged everything into a Tableau Story designed to communicate a clear narrative rather than a collection of charts.",
+      "As a “data journalist,” I used Tableau to build a story about U.S. presidential elections in the 21st century.\n\nI cleaned and standardised key fields and created calculated metrics not provided directly in the raw dataset (e.g., party vote share and loyalty-style measures). I then built interactive visuals, trend charts and county/state maps, with year filters and informative tooltips so users can explore results at multiple levels. Finally, I packaged everything into a Tableau Story designed to communicate a clear narrative rather than a collection of charts.",
     // ✅ add Excel pill
     tags: [TOOL.TABLEAU, TOOL.EXCEL],
     links: {
@@ -157,7 +157,7 @@ const projects = [
     hoverBlurb:
       "Analysed ~46,000 Kickstarter campaigns in Excel to identify what drives funding success across goals, duration, and engagement. Turned messy campaign data into clear, evidence-based recommendations founders can apply.",
     longDescription:
-      "Kickstarter was considering a consulting service for founders—this project produced the initial data-backed playbook.\n\nI cleaned and structured a large Kickstarter dataset in Excel, then used pivot analysis and charts to compare success rates and outcomes across categories and campaign design choices (goal setting, duration, and engagement). Key findings linked success to realistic goals, more funding levels (driving more backers), and active communication—successful projects posted far more updates and received far more comments, while simply running longer didn’t help. I summarised these insights into concise, practical recommendations founders can use when launching a campaign.",
+      "Kickstarter was considering a consulting service for founders: this project produced the initial data-backed playbook.\n\nI cleaned and structured a large Kickstarter dataset in Excel, then used pivot analysis and charts to compare success rates and outcomes across categories and campaign design choices (goal setting, duration, and engagement). Key findings linked success to realistic goals, more funding levels (driving more backers), and active communication: successful projects posted far more updates and received far more comments, while simply running longer didn’t help. I summarised these insights into concise, practical recommendations founders can use when launching a campaign.",
     tags: [TOOL.EXCEL],
     links: {
       tableau: null,
@@ -180,7 +180,7 @@ const projects = [
     hoverBlurb:
       "Used SQL on the AdventureWorks database to identify where marketing budget should go across products, categories, territories, and reps. Found Bikes drive revenue, Accessories/Clothing drive volume, and top territories include Southwest US, Canada and Northwest US.",
     longDescription:
-      "This project used the AdventureWorks database to answer a practical question: how should a company allocate marketing budget for maximum impact?\n\nI wrote SQL queries joining sales transactions with product, vendor, territory, and employee tables to calculate revenue, units sold, seasonality, and performance by segment. Key insights showed Bikes dominate revenue, Accessories/Clothing drive unit volume, and sales are concentrated in territories such as Southwest US, Canada, and Northwest US—while Australia stood out as a growth opportunity. I also compared sales rep performance and commission bands, supporting targeted incentive and enablement efforts.",
+      "This project used the AdventureWorks database to answer a practical question: how should a company allocate marketing budget for maximum impact?\n\nI wrote SQL queries joining sales transactions with product, vendor, territory, and employee tables to calculate revenue, units sold, seasonality, and performance by segment. Key insights showed Bikes dominate revenue, Accessories/Clothing drive unit volume, and sales are concentrated in territories such as Southwest US, Canada, and Northwest US: while Australia stood out as a growth opportunity. I also compared sales rep performance and commission bands, supporting targeted incentive and enablement efforts.",
     tags: [TOOL.SQL],
     links: {
       github: "https://github.com/JamieTighe/adventureworks-marketing-allocation-sql",
@@ -1088,7 +1088,7 @@ function ContactSection() {
 
         <div className="flex flex-wrap gap-3">
           <a
-            href="mailto:jamie@jamietighe.com?subject=Website%20enquiry"
+            href="mailto:jamie.tighe@hotmail.co.uk?subject=Website%20enquiry"
             className="rounded-full border border-white/20 bg-white/5 px-5 py-2 text-sm font-medium hover:bg-white/10 transition"
           >
             Email me
